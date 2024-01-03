@@ -6,7 +6,7 @@ const Root = () => {
   return (
     <>
       <Header />
-      <main className='container'>
+      <main className='container my-10'>
         <Outlet />
       </main>
       <Footer />

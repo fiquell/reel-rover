@@ -1,26 +1,40 @@
-import { Anime, AnimeTopParams, AnimeType, TopClient } from '@tutkli/jikan-ts'
+import { Anime, AnimeClient, AnimeSearchParams, AnimeType } from '@tutkli/jikan-ts'
 import { useEffect, useState } from 'react'
 import AnimeCard from '../components/anime-card'
 
 const Home = () => {
-  const [animeList, setAnimeList] = useState<Anime[] | undefined>(undefined)
+  const [selectedAnimeType, setSelectedAnimeType] = useState<string>()
+  const [animeList, setAnimeList] = useState<Anime[]>()
 
   useEffect(() => {
-    const getTopAnime = async () => {
-      const topClient = new TopClient()
-      const searchParams: AnimeTopParams = {
-        type: AnimeType.movie
+    const getAnimeSearch = async () => {
+      const animeClient = new AnimeClient()
+      const searchParams: AnimeSearchParams = {
+        type: selectedAnimeType
       }
-      const response = await topClient.getTopAnime(searchParams)
+      const response = await animeClient.getAnimeSearch(searchParams)
       setAnimeList(response.data)
     }
-    getTopAnime()
-  }, [])
+    getAnimeSearch()
+  }, [selectedAnimeType])
 
   return (
-    <div className='flex flex-wrap justify-center gap-2'>
-      {animeList?.map((anime) => <AnimeCard anime={anime} />)}
-    </div>
+    <>
+      <div className='mb-5'>
+        <select
+          value={selectedAnimeType}
+          onChange={(event) => setSelectedAnimeType(event.target.value)}>
+          {Object.values(AnimeType).map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className='flex flex-wrap justify-center gap-2'>
+        {animeList?.map((anime) => <AnimeCard key={anime.mal_id} anime={anime} />)}
+      </div>
+    </>
   )
 }
 
