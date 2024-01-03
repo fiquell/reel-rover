@@ -23,7 +23,8 @@ const Home = () => {
       <div className='mb-5'>
         <select
           value={selectedAnimeType}
-          onChange={(event) => setSelectedAnimeType(event.target.value)}>
+          onChange={(event) => setSelectedAnimeType(event.target.value)}
+          className='select select-bordered w-full max-w-32'>
           {Object.values(AnimeType).map((type) => (
             <option key={type} value={type}>
               {type}

@@ -5,19 +5,23 @@ interface AnimeCardProps {
   anime: Anime
 }
 
-const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
+const AnimeCard = ({ anime }: AnimeCardProps) => {
   return (
     <Link
       to={`${anime.mal_id}`}
-      className='h-auto w-64 rounded-md p-5 transition duration-300 ease-in-out hover:bg-neutral-700/50'>
-      <img src={anime.images.webp?.image_url} alt={anime.title} className='mx-auto rounded-md' />
-      <p className='mb-5 mt-2 text-lg font-bold'>{anime.title}</p>
-      <div className='flex flex-wrap gap-1'>
-        {anime.genres.map((genre) => (
-          <div key={genre.mal_id} className='rounded-md bg-neutral-700/75 px-2'>
-            <p>{genre.name}</p>
-          </div>
-        ))}
+      className='card card-compact w-72 transition duration-300 ease-in-out hover:bg-base-content/10'>
+      <figure className='px-4 pt-4'>
+        <img src={anime.images.webp?.image_url} alt={anime.title} className='w-full rounded' />
+      </figure>
+      <div className='card-body'>
+        <p className='card-title'>{anime.title}</p>
+        <div className='card-actions'>
+          {anime.genres.map((genre) => (
+            <div key={genre.mal_id} className='badge badge-accent'>
+              <p>{genre.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </Link>
   )
