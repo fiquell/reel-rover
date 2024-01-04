@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react'
 import { AnimeRating, AnimeType } from '@tutkli/jikan-ts'
 
 interface AnimeDropdownProps {
@@ -17,6 +18,7 @@ const AnimeDropdown = ({
     <div className='dropdown'>
       <button type='button' tabIndex={0} className='btn btn-sm'>
         {selectedOption || placeholder}
+        <Icon icon='material-symbols:keyboard-arrow-down-rounded' />
       </button>
       <ul
         tabIndex={0}
