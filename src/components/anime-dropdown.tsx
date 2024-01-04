@@ -4,6 +4,7 @@ import { AnimeRating, AnimeType } from '@tutkli/jikan-ts'
 interface AnimeDropdownProps {
   options: AnimeType[] | AnimeRating[]
   placeholder: string | readonly string[] | number | undefined
+  uppercaseOption?: boolean | undefined
   selectedOption: string | undefined
   setSelectedOption: (value: React.SetStateAction<string | undefined>) => void
 }
@@ -11,6 +12,7 @@ interface AnimeDropdownProps {
 const AnimeDropdown = ({
   options,
   placeholder,
+  uppercaseOption,
   selectedOption,
   setSelectedOption
 }: AnimeDropdownProps) => {
@@ -25,7 +27,7 @@ const AnimeDropdown = ({
         className='menu dropdown-content z-10 mt-2 w-52 rounded bg-base-200 p-2 shadow'>
         {options.map((option) => (
           <li key={option} onClick={() => setSelectedOption(option)}>
-            <p>{option}</p>
+            <p>{uppercaseOption ? option.toUpperCase() : option}</p>
           </li>
         ))}
       </ul>

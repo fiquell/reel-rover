@@ -33,7 +33,8 @@ const Home = () => {
         <AnimeDropdown
           options={Object.values(AnimeRating)}
           placeholder='Select Anime Rating'
-          selectedOption={selectedAnimeRating}
+          uppercaseOption={true}
+          selectedOption={selectedAnimeRating?.toUpperCase()}
           setSelectedOption={(value) => setSelectedAnimeRating(value)}
         />
       </div>
