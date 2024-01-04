@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react'
 import { Anime } from '@tutkli/jikan-ts'
 import { Link } from 'react-router-dom'
 
@@ -14,7 +15,11 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
         <img src={anime.images.webp?.image_url} alt={anime.title} className='w-full rounded' />
       </figure>
       <div className='card-body'>
-        <p className='card-title'>{anime.title}</p>
+        <p className='card-title text-lg'>{anime.title}</p>
+        <div className='mb-5 flex items-center gap-0.5'>
+          <Icon icon='material-symbols:airware-rounded' />
+          <p>{anime.status}</p>
+        </div>
         <div className='card-actions'>
           {anime.genres.map((genre) => (
             <div key={genre.mal_id} className='badge badge-accent'>
