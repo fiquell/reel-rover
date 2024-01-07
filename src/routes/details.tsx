@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Anime, AnimeClient } from '@tutkli/jikan-ts';
 import { useParams } from 'react-router-dom';
+import { Icon } from '@iconify/react'
+
 
 const Details = () => {
   const [anime, setAnime] = useState<Anime>();
@@ -16,19 +18,23 @@ const Details = () => {
   }, [id]);
 
   return (
-    <div className='grid-cols-3'>
-      <div className='flex gap-5 p-5 shadow-md rounded-md text-slate-200 border-solid border-2 border-sky-500'>
+    <div className='max-w-4xl m-auto'>
+      <div className='flex gap-5 p-5 justify-center border-8 border-slate-700/100  rounded-sm'>
         {anime && anime.images ? (
-          <img src={anime.images.webp?.image_url} alt={anime.title} />
+          <img
+            src={anime.images.webp?.image_url}
+            alt={anime.title}
+            className='rounded-sm'
+          />
         ) : null}
 
-        <div>
+        <div className='text-slate-300'>
           {anime ? (
             <>
               <div className='mb-2'>
-                <h1 className='text-5xl font-semibold'>{anime.title}</h1>
+                <h1 className='text-5xl t font-semibold'>{anime.title}</h1>
               </div>
-              <div>
+              <div className='text-xl'>
                 <p>Type: {anime.type}</p>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Score: {anime.score}</p>
@@ -37,17 +43,24 @@ const Details = () => {
             </>
           ) : null}
 
-          <div className='flex gap-2 mt-5'>
-            <button className='btn'>Add to Bookmark</button>
-            <button className='btn'>Add to Favorites</button>
+         <div className='flex gap-2 mt-5'>
+            <button className='btn btn-neutral'>
+        <Icon icon='material-symbols-light:bookmarks-outline' />
+               Add to Bookmark
+            </button>
+            <button className='btn btn-neutral'>
+        <Icon icon='fluent-mdl2:favorite-star' />
+               Add to Favorites
+            </button>
           </div>
         </div>
       </div>
 
-      <div className='shadow-md rounded-md text-slate-200 p-10 mt-5 border-solid border-2 border-sky-500'>
+
+      <div className='shadow-md  p-10 mt-5 border-solid border-2 border-gray-700 '>
         {anime ? (
-          <p>
-            <b className='text-2xl font-semibold'>Synopsis</b>
+          <p className='text-lg text-slate-400'>
+            <b className='text-2xl text-white font-semibold leading-loose'>Synopsis</b>
             <br />
             {anime.synopsis}
           </p>
