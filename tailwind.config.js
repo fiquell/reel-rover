@@ -13,7 +13,7 @@ export default {
     extend: {}
   },
   daisyui: {
-    themes: ['business']
+    themes: ['night']
   },
   plugins: [daisyui]
 }

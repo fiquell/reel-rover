@@ -10,9 +10,9 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
   return (
     <Link
       to={`${anime.mal_id}`}
-      className='card card-compact w-72 transition duration-300 ease-in-out hover:bg-base-content/10'>
+      className='card card-compact w-72 transition duration-300 ease-in-out hover:bg-base-content/10 rounded-sm'>
       <figure className='px-4 pt-4'>
-        <img src={anime.images.webp?.image_url} alt={anime.title} className='w-full rounded' />
+        <img src={anime.images.webp?.image_url} alt={anime.title} className='w-full rounded-sm' />
       </figure>
       <div className='card-body'>
         <p className='card-title text-lg'>{anime.title}</p>
@@ -22,7 +22,7 @@ const AnimeCard = ({ anime }: AnimeCardProps) => {
         </div>
         <div className='card-actions'>
           {anime.genres.map((genre) => (
-            <div key={genre.mal_id} className='badge badge-accent'>
+            <div key={genre.mal_id} className='badge badge-neutral rounded-sm p-3 '>
               <p>{genre.name}</p>
             </div>
           ))}

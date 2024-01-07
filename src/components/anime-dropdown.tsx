@@ -18,7 +18,7 @@ const AnimeDropdown = ({
 }: AnimeDropdownProps) => {
   return (
     <div className='dropdown'>
-      <button type='button' tabIndex={0} className='btn btn-sm'>
+      <button type='button' tabIndex={0} className='btn btn-md'>
         {selectedOption || placeholder}
         <Icon icon='material-symbols:keyboard-arrow-down-rounded' />
       </button>
