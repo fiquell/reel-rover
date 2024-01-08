@@ -24,9 +24,9 @@ const AnimeDropdown = ({
       </button>
       <ul
         tabIndex={0}
-        className='menu dropdown-content z-10 mt-2 w-52 rounded bg-base-200 p-2 shadow'>
-        {options.map((option) => (
-          <li key={option} onClick={() => setSelectedOption(option)}>
+        className='menu dropdown-content z-10 mt-2 w-52 rounded-btn bg-base-200 px-2 shadow'>
+        {options.map((option, index) => (
+          <li key={index} onClick={() => setSelectedOption(option)} className='my-1'>
             <p>{uppercaseOption ? option.toUpperCase() : option}</p>
           </li>
         ))}
